@@ -1,0 +1,90 @@
+﻿@model asistenteventas.Models.Client
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Cliente</title>
+
+    <!-- Vincula el archivo CSS externo -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Nuevo Cliente</h1>
+            <hr />
+            <p>@ViewBag.mje</p>
+            <form id="form" asp-action="CreateCliente">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="CodCli" class="control-label">Codigo Cliente *</label>
+                    <input asp-for="CodCli" required class="form-control" />
+                    <span asp-validation-for="CodCli" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MailCli" class="control-label">Mail *</label>
+                    <input type="email" asp-for="MailCli" id="mail" required class="form-control" />
+                    <span asp-validation-for="MailCli" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PriNomCli" class="control-label">Primer Nombre *</label>
+                    <input asp-for="PriNomCli" id="pnombre" required class="form-control" />
+                    <span asp-validation-for="PriNomCli" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NroDocCli" class="control-label">Cedula</label>
+                    <input asp-for="NroDocCli" required id="cedula" class="form-control" />
+                    <span asp-validation-for="NroDocCli" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PriApeCli" class="control-label"> Primer Apellido *</label>
+                    <input asp-for="PriApeCli" id="papellido" required class="form-control" />
+                    <span asp-validation-for="PriApeCli" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SegApeCli" class="control-label">Segundo Apellido</label>
+                    <input asp-for="SegApeCli" id="sapellido" class="form-control" />
+                    <span asp-validation-for="SegApeCli" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Crear Cliente" class="btn btn-primary action-button" />
+                </div>
+            </form>
+        </div>
+    </div>
+  
+</body>
+</html>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        document.querySelector("#form").addEventListener("submit", Verificar);
+
+        function Verificar(event) {
+            event.preventDefault();
+            let res = "";
+            let pnombre = document.querySelector("#pnombre").value;
+            let papellido = document.querySelector("#papellido").value;
+            let cedula = document.querySelector("#cedula").value;
+
+            if ((pnombre.length > 2) && (papellido.length > 2) && (cedula.length >= 7 && cedula.length <= 8)) {
+                
+                    this.submit();
+                
+            } else {
+                res = "El nombre y el apellido deben tener al menos 2 caracteres";
+            }
+            document.querySelector("#res").innerHTML = res;
+        }
+
+    </script>
+
+}

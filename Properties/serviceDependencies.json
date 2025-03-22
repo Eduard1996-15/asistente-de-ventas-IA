@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:conexion"
+    },
+    "compute.appService1": {
+      "group": "connections",
+      "type": "compute.appService"
+    }
+  }
+}

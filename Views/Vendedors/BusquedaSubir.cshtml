@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "BusquedaSubir";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .product-image {
+            max-width: 100%;
+            max-height: 100vh;
+            width: auto;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Estilo para los botones fijos en la parte inferior */
+        .fixed-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1;
+            padding: 10px;
+            box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div >
+                <!-- Formulario para cargar una imagen -->
+                <form action="@Url.Action("BusquedaSubir", "Vendedors")" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <label for="imagenFile">Selecciona una imagen:</label>
+                        <input type="file" name="imagenFile" id="imagenFile" class="form-control-file" accept="image/*" required>
+                    </div>
+
+                    <!-- Vista previa de la imagen seleccionada -->
+                    <div class="form-group" st>
+                        <img id="imagenPreview" src="#" alt="Vista previa de la imagen" class="product-image">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary fixed-buttons">Buscar</button>
+                </form>
+
+                <!-- Mostrar un mensaje si hay un ViewBag llamado "mje" -->
+                @if (!string.IsNullOrEmpty(ViewBag.mje))
+                {
+                    <p>@ViewBag.mje</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Función para mostrar una vista previa de la imagen seleccionada
+        $(document).ready(function () {
+            $('#imagenFile').change(function () {
+                previewImage(this);
+            });
+
+            function previewImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#imagenPreview').attr('src', e.target.result);
+                        $('#imagenPreview').show();
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>AnyCPU;ARM32</Platforms>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="ClasificarImgColor.consumption.cs" />
+    <Compile Remove="ClasificarImgColor.training.cs" />
+    <Compile Remove="MLClasificadordeImagenesTextura.consumption.cs" />
+    <Compile Remove="MLClasificadordeImagenesTextura.training.cs" />
+    <Compile Remove="Models\TexturaRopa .consumption.cs" />
+    <Compile Remove="Models\TexturaRopa .training.cs" />
+    <Compile Remove="Models\TexturaRopa.consumption.cs" />
+    <Compile Remove="Models\TexturaRopa.training.cs" />
+    <Compile Remove="TexturaRopa.consumption.cs" />
+    <Compile Remove="TexturaRopa.training.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Vendedors\Busqueda - Copia.cshtml" />
+    <Content Remove="Views\Vendedors\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ClasificarImgColor.mbconfig" />
+    <None Remove="ClasificarImgColor.mlnet" />
+    <None Remove="MLClasificadordeImagenesTextura.mbconfig" />
+    <None Remove="MLClasificadordeImagenesTextura.mlnet" />
+    <None Remove="Models\TexturaRopa .mbconfig" />
+    <None Remove="Models\TexturaRopa .mlnet" />
+    <None Remove="Models\TexturaRopa.mbconfig" />
+    <None Remove="Models\TexturaRopa.mlnet" />
+    <None Remove="TexturaRopa.mbconfig" />
+    <None Remove="TexturaRopa.mlnet" />
+    <None Remove="Views\Administradors\estilos.css" />
+    <None Remove="Views\Estilos.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AForge" Version="2.2.5" />
+    <PackageReference Include="AForge.Imaging" Version="2.2.5" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.13.1" />
+    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.1.0" />
+    <PackageReference Include="Azure.Storage.Queues" Version="12.11.1" />
+    <PackageReference Include="MailKit" Version="4.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.ML" Version="2.0.1" />
+    <PackageReference Include="Microsoft.ML" Version="2.0.1" />
+    <PackageReference Include="Microsoft.ML.Recommender" Version="0.20.1" />
+    <PackageReference Include="Microsoft.ML.Vision" Version="2.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration" Version="6.0.13" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc" Version="6.0.13" />
+    <PackageReference Include="MimeKit" Version="4.1.0" />
+    <PackageReference Include="SciSharp.TensorFlow.Redist" Version="2.3.1" />
+  </ItemGroup>
+  <ItemGroup Label="ClasificarImgTipoPrenda">
+    <None Include="ClasificarImgTipoPrenda.mlnet">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup Label="Recomendaciones">
+    <None Include="Recomendaciones.consumption.cs">
+      <DependentUpon>Recomendaciones.mbconfig</DependentUpon>
+    </None>
+    <None Include="Recomendaciones.training.cs">
+      <DependentUpon>Recomendaciones.mbconfig</DependentUpon>
+    </None>
+    <None Include="Recomendaciones.zip">
+      <DependentUpon>Recomendaciones.mbconfig</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

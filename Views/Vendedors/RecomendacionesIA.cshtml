@@ -1,0 +1,91 @@
+﻿@model IEnumerable<asistenteventas.Models.StockAmpliado>;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewData["Title"]</title>
+
+    <!-- Vincula el archivo CSS externo -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+	<style>
+		html, body {
+			overflow-x: hidden; 
+			width: 100%;
+		}
+		.table-container {
+			height: 100vh; 
+			overflow-y: auto; 
+
+		}
+		.table-container table {
+			max-width: 100%;
+                width: 100%;
+                min-width: 100%; 
+		}
+		.table-container table td {
+				max-width: 200px; 
+				white-space: nowrap; 
+				overflow: hidden;
+				text-overflow: ellipsis; 
+		}
+
+		.product-image {
+			max-width: 100%;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+
+<p> @ViewBag.mje</p>
+
+<main class="container">
+	@if (Model != null && Model.Any())
+	{
+			<div class="table-responsive" style="max-height: 500px;">
+				<table class="table table-bordered table-striped">
+					<tbody style="overflow-y: scroll;">
+					@foreach (var item in Model)
+					{
+						
+						<tr>
+							<td colspan="5" class="image-row">
+								@if (item.Imagen != null && item.Imagen.Length > 0)
+								{
+									<img src="data:image/png;base64,@(Convert.ToBase64String(item.Imagen))" alt="Imagen" class="product-image" />
+								}
+								else
+								{
+									<span>No disponible</span>
+								}
+							</td>
+						</tr>
+						<tr   class="row align-items-center text-center">
+								<td >
+									@Html.DisplayFor(modelItem => item.Stock.DesArt)
+								</td>
+								<td >
+									@Html.DisplayFor(modelItem => item.Stock.DesDetArt)
+								</td>
+								<td >
+									@Html.DisplayFor(modelItem => item.Color)
+								</td>
+								<td >
+									@Html.DisplayFor(modelItem => item.Stock.SalWebArt)
+								</td>
+						</tr>
+
+					}
+				</tbody>
+			</table>
+
+		</div>
+	}
+</main>
+</body>
+</html>
+
+@section Scripts {
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+}

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<asistenteventas.Models.StockAmpliado>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Vincula el archivo CSS externo -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+
+    <style>
+        .product-image {
+            max-width: 100%; 
+            height: auto; 
+        }
+
+        .image-row {
+            margin-bottom: 20px; 
+        }
+        .image-col {
+            padding: 0 5px; 
+        }
+    </style>
+</head>
+<body>
+    <main class="container-fluid">
+        <section class="row" style="overflow-y: auto; max-height: 95vh; margin-bottom: 10px;">
+
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 image-col">
+                        <div class="image-row">
+                            @if (item.Imagen != null && item.Imagen.Length > 0)
+                            {
+                                <img src="data:image/png;base64,@(Convert.ToBase64String(item.Imagen))" alt="Imagen" class="product-image" />
+                            }
+                            else
+                            {
+                                <span>No disponible</span>
+                            }
+                        </div>
+                        <p>@Html.DisplayFor(modelItem => item.Stock.DesArt)</p>
+                        <p>@Html.DisplayFor(modelItem => item.Stock.DesDetArt)</p>
+                        <p>@Html.DisplayFor(modelItem => item.Stock.CodTalPrv)</p>
+                        <p>@Html.DisplayFor(modelItem => item.Stock.SalWebArt) en stock</p>
+                        <p>@Html.DisplayFor(modelItem => item.Color)</p>
+                    </div>
+                }
+            }
+        </section>
+    </main>
+</body>
+</html>
