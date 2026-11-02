@@ -1,0 +1,91 @@
+﻿@model asistenteventas.Models.Client;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Vincula el archivo CSS externo -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+
+
+<div class="div1">
+
+
+    <div>
+        <form asp-action="Index">
+            <div>
+                <p>Buscar Cliente </p>
+                <label for="txtbuscar">Cedula : </label>
+                <input required type="text" name="txtbuscar" value="" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+            <div>
+                <p>@ViewBag.mje</p>
+            </div>
+
+        </form>
+    </div>
+
+    @if (Model != null)
+    {
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                       Apellido
+                    </th>
+                    <th>
+                        Cedula
+                    </th>
+                    <th>
+                        telefono
+                    </th>
+                    <th>
+                        Mail
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>
+                        @Model.PriNomCli
+                    </td>
+                    <td>
+                        @Model.PriApeCli
+                    </td>
+                    <td>
+                         @Model.NroDocCli
+                    </td>
+                    <td>
+                        @Model.TelCli
+                    </td>
+                    <td>
+                         @Model.MailCli
+                    </td>
+
+                    <td>
+                        <a asp-action="RecomendacionesIA" asp-route-id="@Model.CodCli">Recomendaciones</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    }
+</div>
+</body>
+</html>

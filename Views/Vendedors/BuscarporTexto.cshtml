@@ -1,0 +1,75 @@
+﻿@model IEnumerable<asistenteventas.Models.StockAmpliado>
+
+@{
+    ViewData["Title"] = "BuscarporTexto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar por Texto</title>
+
+    <!-- Vincula el archivo CSS externo -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .product-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .image-row {
+            margin-bottom: 20px;
+        }
+
+        .image-col {
+            padding: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container-fluid">
+        <section class="row" style="overflow-y: auto; max-height: 95vh; max-width:95vh; margin-bottom: 10px;">
+            <h2>Buscar por Descripción</h2>
+            <form asp-action="BuscarporTexto">
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <input required type="text" name="descripcion" value="" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Buscar" class="btn btn-primary" />
+                </div>
+                <div>
+                    <p>@ViewBag.mje</p>
+                </div>
+            </form>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var stockItem in Model)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 image-col">
+                        <div class="image-row">
+                            @if (stockItem.Imagen != null && stockItem.Imagen.Length > 0)
+                            {
+                                <img src="data:image/png;base64,@(Convert.ToBase64String(stockItem.Imagen))" alt="Imagen" class="product-image" />
+                             }
+                            else
+                            {
+                                <span>No disponible</span>
+                            }
+                            <h5 class="card-title">@stockItem.Stock.DesArt</h5>
+                            <p class="card-text">@stockItem.Stock.DesDetArt</p>
+                            <p class="card-text">@stockItem.Stock.CodTalPrv</p>
+                                    <p class="card-text">@stockItem.Stock.SalWebArt en stock</p>
+                            <p class="card-text">@stockItem.Color</p>
+                        </div>
+                    </div>
+                    }
+                }
+            </section>
+        </main>
+    </body>
+</html>

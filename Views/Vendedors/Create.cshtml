@@ -1,0 +1,106 @@
+﻿@model asistenteventas.Models.Usuario
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Vincula el archivo CSS externo -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<div><p id="result"></p></div>
+<div class="row">
+    <div class="col-md-4">
+        <form id="formvendedor" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" id="nombre" required class ="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="passsword" class="control-label"></label>
+                <input asp-for="passsword" id="passsword" required class="form-control" />
+                <span asp-validation-for="passsword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>
+
+@section  Scripts {
+<script >
+        document.querySelector("#formvendedor").addEventListener("submit", ValidarDatos);
+
+        function ValidarDatos(event) {
+            event.preventDefault();
+            document.querySelector("#result").innerHTML = "";
+            let nombre = document.querySelector("#nombre").value;
+            let contrasenia = document.querySelector("#passsword").value;
+            if (nombre.length >= 3){
+                if ( validar_clave(contrasenia)) {
+                this.submit();
+                 }
+            }else{
+            document.querySelector("#result").innerHTML = "nombre debe ser minimo 3 caracteres <br>";
+            }
+        }
+
+        function validar_clave(contrasenia) {
+            if (contrasenia.length >= 6)//largo de la clave minimo 6
+            {
+                var mayuscula = false;
+                var minuscula = false;
+                var numero = false;
+                let result=""
+
+                for (let i = 0; i < contrasenia.length; i++)//recorro la misma
+                {
+                    if (contrasenia.charCodeAt(i) >= 65 && contrasenia.charCodeAt(i) <= 90) {
+                        mayuscula = true;//uso los charcode para saber si tiene mayusculas
+                    }
+                    else if (contrasenia.charCodeAt(i) >= 97 && contrasenia.charCodeAt(i) <= 122) {
+                        minuscula = true;//uso los charcode para saber si tiene minusculas
+                    }
+                    else if (contrasenia.charCodeAt(i) >= 48 && contrasenia.charCodeAt(i) <= 57) {
+                        numero = true;////uso los charcode para saber si tiene numeros
+                    }
+                }
+                if (mayuscula && minuscula && numero)//si tiene todo
+                {
+                    return true;//es verdadero
+                } else {
+
+                    if (!mayuscula) {//si da false mandar alert
+                       result = "Falta una letra mayúscula en el password <br>";
+                    }
+                    if (!minuscula) {
+                        result = " Falta una letra minuscula en el password <br>";
+                    }
+                    if (!numero) {
+                        result = "Falta un número en el password <br>";
+                    }
+                    document.querySelector("#result").innerHTML = result;
+                        }
+            } else {//mensaje
+                result = "La contraseña debe ser superior a 6 caracteres ";
+                document.querySelector("#result").innerHTML = result;
+                        return false;//si no falso
+            }
+        }
+</script>
+  }

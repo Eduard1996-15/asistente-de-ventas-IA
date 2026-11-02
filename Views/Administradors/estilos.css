@@ -1,0 +1,15 @@
+﻿
+/* Media query para dispositivos con un ancho máximo de 767px (pantallas pequeñas) */
+@media (max-width: 767px) {
+    .container-fluid {
+        max-width: 100%;
+    }
+
+    .table-container {
+        padding: 10px;
+    }
+
+    .fixed-buttons {
+        padding: 5px;
+    }
+}

@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- Vincula el archivo CSS externo -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<div class="login">
+    <h1>Logueo</h1>
+    <form method="post">
+        <input type="text" name="n" id="txtnombre" placeholder="Nombre" required="required" />
+        <input type="password" name="c" id="txtcodigo" placeholder="Contraseña" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large" id="btnEntrar">Entrar</button>
+        <p id="res"></p>
+    </form>
+    <p>@ViewBag.mje</p>
+</div>
+    </body>
+</html>

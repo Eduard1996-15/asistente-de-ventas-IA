@@ -1,0 +1,179 @@
+﻿@model asistenteventas.Models.Client
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DirCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DirCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NroDocCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NroDocCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TelCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TelCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MailCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MailCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FecNacCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FecNacCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ObsCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ObsCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FecAltCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FecAltCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LugAltCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LugAltCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FecActCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FecActCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HorActCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HorActCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LugActCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LugActCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FlgCliLoc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FlgCliLoc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CodDpt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CodDpt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CodZon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CodZon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PriNomCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PriNomCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SegNomCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SegNomCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PriApeCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PriApeCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SegApeCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SegApeCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NroNomCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NroNomCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SexCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SexCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CelCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CelCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UltCmpCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UltCmpCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CodPais)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CodPais)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipDocCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipDocCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CiuCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CiuCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AltWebCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AltWebCli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CarTelCli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CarTelCli)
+        </dd>
+    </dl>
+</div>
+<div>
+    
+</div>

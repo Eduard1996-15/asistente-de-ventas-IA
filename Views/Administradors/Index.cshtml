@@ -1,0 +1,94 @@
+﻿@model IEnumerable<asistenteventas.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Vendedores</title>
+
+    <!-- Vincula el archivo CSS externo -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .table-container {
+            height: 70vh; /* Ajusta el porcentaje según tus necesidades */
+            overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+        }
+        .table-container table {
+                width: 100%;
+        }
+        /* Estilo para los botones fijos en la parte inferior */
+        .fixed-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1;
+            padding: 10px;
+            box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .edit-button,
+        .delete-button {
+            width: 100px; 
+        }
+    </style>
+</head>
+<body>
+    <main class="container-fluid">
+        <section class="row scrollable-container">
+            <p>@ViewBag.men</p>
+            <h3 class="">Lista Vendedores</h3>
+            @if (Model != null && Model.Any())
+            {
+                <div class="table-container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Password</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.passsword)
+                                    </td>
+                                    <td>                                  
+                                        <a class="btn btn-primary action-button edit-button" asp-controller="Vendedors" asp-action="Edit" asp-route-id="@item.id">Editar</a>
+                                        <a class="btn btn-danger action-button delete-button" asp-controller="Vendedors" asp-action="Delete" asp-route-id="@item.id">Eliminar</a>
+                                      </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p>No se encontraron vendedores.</p>
+            }
+        </section>
+    </main>
+
+    <!-- Sección para los botones fijos en la parte inferior -->
+    <section class="fixed-buttons">
+        <a class="btn btn-outline-primary action-button" asp-controller="Vendedors" asp-action="Create">Nuevo Vendedor</a>
+        <a class="btn btn-outline-primary action-button"  asp-action="EnviarCorreo">Enviar Correos</a>
+    </section>
+</body>
+</html>
